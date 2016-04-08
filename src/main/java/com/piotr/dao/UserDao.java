@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 import com.piotr.config.Database;
 import com.piotr.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import java.util.List;
  //Created by jalos on 16.03.2016.
 
 
-
+@Repository
 public class UserDao {
 // brakuje findById(int id ) throws SQLException
     private Database database = new Database();
