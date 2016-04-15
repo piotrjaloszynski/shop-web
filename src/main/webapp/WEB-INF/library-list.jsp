@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jalos
@@ -11,72 +12,84 @@
     <title>biblioteka ksiazek</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <h1>tabela uzytkownikow </h1>
 
+<p>Note that the form itself is not visible.</p>
 <a href="/library-create" class="btn-primary btn"> dodaj uzytkownika</a>
 <!-- dodaje zebra paski do tabelki-->
 
+<table class="table table-striped table-bordered table-hover ">
+    <thead>
+    <tr class="danger">
+        <td>id</td>
+        <td>autor</td>
+        <td>tytul</td>
+        <td>ISBN</td>
+        <td>data_usuniecia</td>
+        <td>data_rejestracji</td>
+        <td>action</td>
 
-<tr class="danger">
-    <td>id</td>
-    <td>autor</td>
-    <td>tytul</td>
-    <td>ISBN</td>
-    <td>data_usuniecia</td>
-    <td>data_rejestracji</td>
-
-
-
-</tr>
-<thead>
-<tbody>
-<c:forEach items="${librariesLoop}" var="library">
-    <%--w petli for odnosmiy sie do konrektnego library , items nazwa listy po ktorej petla ma iterowac, po pustej kolekcji nie pojdzie--%>
-    <tr>
-        <td>${library.id}</td>
-        <td>${library.autor}</td>
-            <%--zebt TA CZESC SIE WYGENEROWALA MUSI BYC GET  I ZA TO ODPOWIADA I SCISLE POWIAZANE Z TYM CO SIE W JAVA ZNAJDUJE--%>
-
-        <td>${library.tytul}</td>
-        <td>${library.ISBN}</td>
-        <td>${library.data_usuniecia}</td>
-        <td>${library.data_rejestru}</td>
-
-
-        <td>
-            <form action="/deleteLibraryAction" method ="post">
-                <input type="hidden" name="id" value="${library.id}"/>
-                <input type ="submit" value ="usun"/>
-
-
-            </form>
-            <form action="/library-edit" method ="get">
-                <input type="hidden" name="id" value="${library.id}"/>
-                <input type ="submit" value ="edytuj library"/>
-
-
-            </form>
-        </td>
     </tr>
+    <thead>
 
 
-</c:forEach>
+    <tbody>
+    <c:forEach items="${librariesLoop}" var="library">
+        <%--w petli for odnosmiy sie do konrektnego library , items nazwa listy po ktorej petla ma iterowac, po pustej kolekcji nie pojdzie--%>
+        <tr>
+            <td>${library.id}</td>
+            <td>${library.autor}</td>
+                <%--zebt TA CZESC SIE WYGENEROWALA MUSI BYC GET  I ZA TO ODPOWIADA I SCISLE POWIAZANE Z TYM CO SIE W JAVA ZNAJDUJE--%>
+
+            <td>${library.tytul}</td>
+            <td>${library.ISBN}</td>
+            <td>${library.data_usuniecia}</td>
+            <td>${library.data_rejestracji}</td>
 
 
+            <td>
+                <form action="/deleteLibraryAction" method="post">
+                    <input type="hidden" name="id" value="${library.id}"/>
+                    <input type="submit" value="usun"/>
 
-</tbody>
+
+                </form>
+                <form action="/library-edit" method="get">
+                    <input type="hidden" name="id" value="${library.id}"/>
+                    <input type="submit" value="edytuj library"/>
+                    <!-- gdzies tutaj jest blad bo w user -list mozna usuwac i edytowac-->
+
+                </form>
+            </td>
+        </tr>
 
 
+    </c:forEach>
 
 
+    </tbody>
+
+</table>
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+    </div>
+</div>
+
+<img src="../resources/img/pilka.png" alt="Smiley face" height="42" width="42">
 </body>
 </html>

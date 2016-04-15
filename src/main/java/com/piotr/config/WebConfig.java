@@ -31,4 +31,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 }
+
+
 // skleja sciezke i zwraca widok .  wysyla do przegladarki strone
+//wspierac kontroler w dzialaniu.

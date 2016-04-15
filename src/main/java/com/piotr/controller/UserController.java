@@ -17,7 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 /**
  * Created by jalos on 05.04.2016.
  */
-
+// 0. sprawdzaj web config, 1. wpisac z aplikacji webServlet, user list to co dostaje z odpowiedzi
 @Controller
 public class UserController {
     @Autowired
@@ -28,12 +28,13 @@ public class UserController {
 
         List<User> users = userDao.findAll();
         model.addAttribute("usersLoop", users);
-        return "user-list";// nazwa strony internetowej ktora trafia do view resolvera dokleja co dostalem w prefix
+        return "user-list";// nazwa strony internetowej ktora trafia do view resolvera dokleja
+        // co dostalem w prefix
         // web-inf / views/user.list
-
+//public class userDao. stad dac nad klasa repository,
 
     }
-
+//CREATE USERSERVLET POCHODZI Z USER..
     @RequestMapping(value = "/user-create", method = GET)
     public String getUserCreateView() {
         return "user-create";

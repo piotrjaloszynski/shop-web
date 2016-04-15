@@ -3,6 +3,7 @@ package com.piotr.dao;
 
 import com.piotr.config.Database;
 import com.piotr.model.Library;
+import org.springframework.stereotype.Repository;
 
 
 import java.sql.*;
@@ -12,6 +13,8 @@ import java.util.List;
 /**
  * Created by jalos on 26.03.2016.
  */
+
+@Repository
 public class LibraryDao {
     private Database database = new Database();
 
